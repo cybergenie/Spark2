@@ -1,0 +1,80 @@
+﻿<base:BasePage x:Class="Spark2.Views.Client"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Spark2.Views"
+      xmlns:base="clr-namespace:Spark2"
+      mc:Ignorable="d"       
+      Title="Client">
+
+    <StackPanel Loaded="Client_Loaded" Unloaded="Client_Unloaded">
+
+        <TextBlock Text="说明:"  Margin="10,5,0,5" FontSize="24"/>
+        <TextBlock Text="读取传感器数据" Margin="10,5,0,5"/>
+        <TextBlock TextWrapping="Wrap" Margin="10,5,0,5">
+                单击连接设备，与传感器建立通讯。
+                单击获取数据读取传感器数值。
+        </TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="0,5,0,6">
+            <TextBlock  TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0">姓名:</TextBlock>
+            <TextBox x:Name="tbName" Width="220" Margin="10,0,45,0" VerticalAlignment="Stretch" VerticalContentAlignment="Bottom"/>
+            <TextBlock  TextWrapping="Wrap" Margin="1,0,0,0">
+                已选中 <Run x:Name="SelectedDeviceRun" FontWeight="Bold"/>个设备。
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="ConnectButton1" Content="连接设备1" Click="ConnectButton1_Click" Margin="20,10,10,10" Height="35" Width="85"/>
+            <Button x:Name="ConnectButton2" Content="连接设备2" Click="ConnectButton2_Click" Margin="20,10,10,10" Height="35" Width="85"/>
+            <Button x:Name="ConnectButton3" Content="连接设备3" Click="ConnectButton3_Click" Margin="20,10,10,10" Height="35" Width="85"/>
+            <Button x:Name="StopButton" Content="停止读取" Click="StopButton_Click" Margin="20,10,10,10" Height="35" Width="85"/>
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="CharacteristicLatestValue1" Margin="0,10,0,0" HorizontalAlignment="Left" />
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,10,0">
+                <RadioButton x:Name="rbLL1" Content="左腿"/>
+                <RadioButton x:Name="rbRL1" Content="右腿"/>
+                <RadioButton x:Name="rbMI1" Content="腰部"/>
+            </StackPanel>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="CharacteristicLatestValue2" Margin="0,10,0,0" HorizontalAlignment="Left" />
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,10,0">
+                <RadioButton x:Name="rbLL2" Content="左腿"/>
+                <RadioButton x:Name="rbRL2" Content="右腿"/>
+                <RadioButton x:Name="rbMI2" Content="腰部"/>
+            </StackPanel>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="CharacteristicLatestValue3" Margin="0,10,0,0" HorizontalAlignment="Left" />
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,10,0">
+                <RadioButton x:Name="rbLL3" Content="左腿"/>
+                <RadioButton x:Name="rbRL3" Content="右腿"/>
+                <RadioButton x:Name="rbMI3" Content="腰部"/>
+            </StackPanel>
+        </Grid>
+        <Grid Margin="0,5,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="CharacteristicLatestValue4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FlowDirection="LeftToRight" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom" Margin="5,0,10,0" Height="25"/>
+            <Button VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="65" Grid.Column="1" Margin="0,0,5,3" Content="保  存" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click"/>
+        </Grid>
+        
+
+
+    </StackPanel>
+</base:BasePage>

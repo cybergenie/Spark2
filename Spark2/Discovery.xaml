@@ -1,0 +1,57 @@
+﻿<base:BasePage x:Class="Spark2.Views.Discovery"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Spark2.Views"
+      xmlns:base="clr-namespace:Spark2"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Discovery" Unloaded="Discovery_Unloaded" >
+    <base:BasePage.Resources>
+        <DataTemplate x:Key="ResultsListViewTemplate" DataType="base:BluetoothLEDeviceDisplay.">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" MinWidth="100"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>                
+                <StackPanel Grid.Column="1" Margin="5">
+                    <TextBlock >
+                        名称: <Run Text="{Binding Name, Mode=OneWay}" FontWeight="Bold"/>
+                    </TextBlock>
+                    <TextBlock>
+                        是否配对: <Run Text="{Binding IsPaired, Mode=OneWay}"/>, 是否连接: <Run Text="{Binding IsConnected, Mode=OneWay}"/>, 能否连接:<Run Text="{Binding IsConnectable, Mode=OneWay}"/>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel  Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"  >
+                    <CheckBox HorizontalAlignment="Right" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="25,0,25,0" Width="85" IsChecked="{Binding IsChecked,Mode=TwoWay}" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </base:BasePage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,0,0,10">
+            <TextBlock Text="说明:" />
+            <TextBlock Text="查找设备信息"/>
+            <TextBlock TextWrapping="Wrap">
+                扫描附近的设备信息。请从列表中选择设备：
+            </TextBlock>
+            <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                <Button x:Name="EnumerateButton" Content="开始扫描"  Margin="0,0,10,0" Click="EnumerateButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="0,10,0,0"
+                      BorderBrush="AntiqueWhite" BorderThickness="1">
+            <ListView x:Name="ResultsListView" DataContext="x:Class"
+                      ItemTemplate="{StaticResource ResultsListViewTemplate}"
+                      ItemsSource="{Binding Path=KnownDevices, Mode=OneWay}"/>
+        </ScrollViewer>
+
+    </Grid>
+</base:BasePage>
